@@ -17,6 +17,8 @@ class Carrera:
         print(f'Carrera: {nombre_str} - Clave: {clave_str}')
         for grupo in self.grupos:
             grupo.mostrar_alumnos()
+            
+    
 
 
 if __name__ == "__main__":

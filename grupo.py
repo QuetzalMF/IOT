@@ -19,7 +19,10 @@ class Grupo:
             print(f'Alumnos del grupo {seccion_str}-{grado_str}:')
             for alumno in self.alumnos:
                 print(alumno)
-
+                
+    def exportar_alumnos(self):
+        """Exporta los datos de todos los alumnos del grupo"""
+        return [alumno.exportar() for alumno in self.alumnos]
 
 if __name__  == "__main__":
     alumno1 = Alumno("Juan", "Pérez", "García", "CURP123", "M123")
