@@ -1,5 +1,5 @@
-from grupos import Grupo
-from carreras import Carrera
+from grupo import Grupo
+from carrera import Carrera
 class Alumno:
     def __init__(self, nombre, apaterno, amaterno, curp=None, matricula=None):
         self.nombre = nombre
@@ -83,6 +83,3 @@ if __name__ == "__main__":
     arreglo_alumnos_actualizado = grupo1.exportar_alumnos()
     print(arreglo_alumnos_actualizado)
 
-#crear un arreglo que muestre los datos del alumno y asi mismo al crear el metodo de editar sea al arreglo mas no a las clases
-#quitar el exportar
-#quitar si hay matricula

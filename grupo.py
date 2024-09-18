@@ -1,4 +1,4 @@
-from alumnos import Alumno
+from alumno import Alumno
 
 class Grupo:
     def __init__(self, seccion=None, grado=None):

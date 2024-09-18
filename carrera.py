@@ -1,5 +1,5 @@
-from grupos import Grupo
-from alumnos import Alumno
+from grupo import Grupo
+from alumno import Alumno
 
 class Carrera:
     def __init__(self, nombre=None, clave=None):
