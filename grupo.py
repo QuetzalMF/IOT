@@ -6,10 +6,12 @@ class Grupo:
         self.grado = grado  
         self.alumnos = []
 
-    def agregar_alumno(self, alumno: Alumno):
+    def agregar(self, alumno: Alumno):
+        """Agrega un alumno al grupo"""
         self.alumnos.append(alumno)
 
-    def mostrar_alumnos(self):
+    def listar(self):
+        """Muestra los alumnos del grupo"""
         seccion_str = self.seccion if self.seccion else "Sección no asignada"
         grado_str = self.grado if self.grado else "Grado no asignado"
         
@@ -20,9 +22,10 @@ class Grupo:
             for alumno in self.alumnos:
                 print(alumno)
                 
-    def exportar_alumnos(self):
+    def exportar(self):
         """Exporta los datos de todos los alumnos del grupo"""
         return [alumno.exportar() for alumno in self.alumnos]
+
 
 if __name__  == "__main__":
     alumno1 = Alumno("Juan", "Pérez", "García", "CURP123", "M123")
@@ -34,18 +37,18 @@ if __name__  == "__main__":
     alumno6 = Alumno("Sofía", "Martínez", "Fernández", "CURP987", "M987")
 
     grupo1 = Grupo("A", 1)
-    grupo1.agregar_alumno(alumno1)
-    grupo1.agregar_alumno(alumno2)
-    grupo1.agregar_alumno(alumno3)
+    grupo1.agregar(alumno1)
+    grupo1.agregar(alumno2)
+    grupo1.agregar(alumno3)
 
     grupo2 = Grupo()  
-    grupo2.agregar_alumno(alumno4)
-    grupo2.agregar_alumno(alumno5)
-    grupo2.agregar_alumno(alumno6)
+    grupo2.agregar(alumno4)
+    grupo2.agregar(alumno5)
+    grupo2.agregar(alumno6)
 
     
     print("Datos del Grupo 1:")
-    grupo1.mostrar_alumnos()
+    grupo1.listar()
 
     print("\nDatos del Grupo 2:")
-    grupo2.mostrar_alumnos()
+    grupo2.listar()

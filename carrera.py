@@ -3,20 +3,27 @@ from alumno import Alumno
 
 class Carrera:
     def __init__(self, nombre=None, clave=None):
-        self.nombre = nombre  # Nombre es opcional
-        self.clave = clave  # Clave es opcional
+        self.nombre = nombre  # Nombre de la carrera
+        self.clave = clave  # Clave de la carrera
         self.grupos = []
 
-    def agregar_grupo(self, grupo: Grupo):
+    def agregar(self, grupo: Grupo):
+        """Agrega un grupo a la carrera"""
         self.grupos.append(grupo)
 
-    def mostrar_grupos(self):
+    def listar(self):
+        """Lista los grupos y alumnos de la carrera"""
         nombre_str = self.nombre if self.nombre else "Nombre no asignado"
         clave_str = self.clave if self.clave else "Clave no asignada"
 
         print(f'Carrera: {nombre_str} - Clave: {clave_str}')
         for grupo in self.grupos:
-            grupo.mostrar_alumnos()
+            grupo.listar()
+
+    def exportar(self):
+        """Exporta los datos de todos los grupos y alumnos de la carrera"""
+        return [grupo.exportar() for grupo in self.grupos]
+
             
     
 
@@ -31,23 +38,23 @@ if __name__ == "__main__":
     alumno6 = Alumno("Sofía", "Martínez", "Fernández", "CURP987", "M987")
 
     grupo1 = Grupo("A", 1)
-    grupo1.agregar_alumno(alumno1)
-    grupo1.agregar_alumno(alumno2)
-    grupo1.agregar_alumno(alumno3)
+    grupo1.agregar(alumno1)
+    grupo1.agregar(alumno2)
+    grupo1.agregar(alumno3)
 
     grupo2 = Grupo()  
-    grupo2.agregar_alumno(alumno4)
-    grupo2.agregar_alumno(alumno5)
-    grupo2.agregar_alumno(alumno6)
+    grupo2.agregar(alumno4)
+    grupo2.agregar(alumno5)
+    grupo2.agregar(alumno6)
 
     carrera1 = Carrera("Ingeniería en Sistemas", "IS123")
-    carrera1.agregar_grupo(grupo1)
+    carrera1.agregar(grupo1)
 
     carrera2 = Carrera()  
-    carrera2.agregar_grupo(grupo2)
+    carrera2.agregar(grupo2)
 
     print("Datos de la Carrera 1:")
-    carrera1.mostrar_grupos()
+    carrera1.listar()
 
     print("\nDatos de la Carrera 2:")
-    carrera2.mostrar_grupos()
+    carrera2.listar()
