@@ -1,60 +1,50 @@
-from grupo import Grupo
 from alumno import Alumno
+from grupo import Grupo
+from lista import Lista
 
-class Carrera:
-    def __init__(self, nombre=None, clave=None):
-        self.nombre = nombre  # Nombre de la carrera
-        self.clave = clave  # Clave de la carrera
-        self.grupos = []
+class Carrera(Lista):
+    def _init_(self, nombre=None, clave=None):
+        super()._init_()  # Inicializa la clase base
+        self.nombre = nombre
+        self.clave = clave
 
-    def agregar(self, grupo: Grupo):
-        """Agrega un grupo a la carrera"""
-        self.grupos.append(grupo)
+    def add_grupo(self, grupo):
+        self.add(grupo)
 
-    def listar(self):
-        """Lista los grupos y alumnos de la carrera"""
-        nombre_str = self.nombre if self.nombre else "Nombre no asignado"
-        clave_str = self.clave if self.clave else "Clave no asignada"
+    def edit_grupo(self, idx, grupo):
+        self.edit(idx, grupo)
 
-        print(f'Carrera: {nombre_str} - Clave: {clave_str}')
-        for grupo in self.grupos:
-            grupo.listar()
+    def get_grupos(self):
+        return self.get_all()
 
-    def exportar(self):
-        """Exporta los datos de todos los grupos y alumnos de la carrera"""
-        return [grupo.exportar() for grupo in self.grupos]
-
-            
-    
-
+    def _repr_(self):
+        return f'{self.nombre}, {self.clave}'
 
 if __name__ == "__main__":
-    alumno1 = Alumno("Juan", "Pérez", "García", "CURP123", "M123")
-    alumno2 = Alumno("Ana", "López", "Martínez", "CURP456", "M456")
-    alumno3 = Alumno("Luis", "Ramírez", "Torres", "CURP789", "M789")
+    lista_carreras = Lista()
 
-    alumno4 = Alumno("Carlos", "Díaz", "Hernández", "CURP321", "M321")
-    alumno5 = Alumno("María", "González", "Sánchez", "CURP654", "M654")
-    alumno6 = Alumno("Sofía", "Martínez", "Fernández", "CURP987", "M987")
+    carrera1 = Carrera("Tics", "2212")
+    grupo1 = Grupo("7mo", "A")
+    grupo1.add_alumno(Alumno("Miguel", "Castro", "Mesta", "0001", "A0001"))
+    grupo1.add_alumno(Alumno("Gabriela", "Zamora", "Hernandez", "0002", "A0002"))
+    carrera1.add_grupo(grupo1)
 
-    grupo1 = Grupo("A", 1)
-    grupo1.agregar(alumno1)
-    grupo1.agregar(alumno2)
-    grupo1.agregar(alumno3)
+    grupo2 = Grupo("7mo", "B")
+    grupo2.add_alumno(Alumno("Sofia", "López", "Martínez", "0003", "A0003"))
+    carrera1.add_grupo(grupo2)
 
-    grupo2 = Grupo()  
-    grupo2.agregar(alumno4)
-    grupo2.agregar(alumno5)
-    grupo2.agregar(alumno6)
+    lista_carreras.add(carrera1)
 
-    carrera1 = Carrera("Ingeniería en Sistemas", "IS123")
-    carrera1.agregar(grupo1)
+    carrera2 = Carrera("Matemáticas", "2213")
+    grupo3 = Grupo("7mo", "C")
+    grupo3.add_alumno(Alumno("Carlos", "Pérez", "Gómez", "0004", "A0004"))
+    carrera2.add_grupo(grupo3)
 
-    carrera2 = Carrera()  
-    carrera2.agregar(grupo2)
+    lista_carreras.add(carrera2)
 
-    print("Datos de la Carrera 1:")
-    carrera1.listar()
-
-    print("\nDatos de la Carrera 2:")
-    carrera2.listar()
+    for carrera in lista_carreras.get_all():
+        print(carrera)
+        for grupo in carrera.get_grupos():
+            print(f"  {grupo}")
+            for alumno in grupo.get_alumnos():
+                print(f"    {alumno}")

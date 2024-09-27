@@ -1,54 +1,39 @@
 from alumno import Alumno
+from lista import Lista
 
-class Grupo:
-    def __init__(self, seccion=None, grado=None):
-        self.seccion = seccion  
-        self.grado = grado  
-        self.alumnos = []
+class Grupo(Lista):
+    def _init_(self, grado=None, seccion=None):
+        super()._init_()  
+        self.grado = grado
+        self.seccion = seccion
 
-    def agregar(self, alumno: Alumno):
-        """Agrega un alumno al grupo"""
-        self.alumnos.append(alumno)
+    def add_alumno(self, alumno):
+        self.add(alumno) 
 
-    def listar(self):
-        """Muestra los alumnos del grupo"""
-        seccion_str = self.seccion if self.seccion else "Sección no asignada"
-        grado_str = self.grado if self.grado else "Grado no asignado"
-        
-        if not self.alumnos:
-            print(f'No hay alumnos en el grupo {seccion_str} - {grado_str}')
-        else:
-            print(f'Alumnos del grupo {seccion_str}-{grado_str}:')
-            for alumno in self.alumnos:
-                print(alumno)
-                
-    def exportar(self):
-        """Exporta los datos de todos los alumnos del grupo"""
-        return [alumno.exportar() for alumno in self.alumnos]
+    def get_alumnos(self):
+        return self.get_all() 
 
+    def _repr_(self):
+        return f"Grupo: {self.grado} {self.seccion}"
 
-if __name__  == "__main__":
-    alumno1 = Alumno("Juan", "Pérez", "García", "CURP123", "M123")
-    alumno2 = Alumno("Ana", "López", "Martínez", "CURP456", "M456")
-    alumno3 = Alumno("Luis", "Ramírez", "Torres", "CURP789", "M789")
-    
-    alumno4 = Alumno("Carlos", "Díaz", "Hernández", "CURP321", "M321")
-    alumno5 = Alumno("María", "González", "Sánchez", "CURP654", "M654")
-    alumno6 = Alumno("Sofía", "Martínez", "Fernández", "CURP987", "M987")
+if __name__ == "__main__":
 
-    grupo1 = Grupo("A", 1)
-    grupo1.agregar(alumno1)
-    grupo1.agregar(alumno2)
-    grupo1.agregar(alumno3)
+    lista_grupos = Lista()
 
-    grupo2 = Grupo()  
-    grupo2.agregar(alumno4)
-    grupo2.agregar(alumno5)
-    grupo2.agregar(alumno6)
+    grupo1 = Grupo("7mo", "A")
+    grupo1.add_alumno(Alumno("Miguel", "Castro", "Mesta", "0001", "A0001"))
+    grupo1.add_alumno(Alumno("Gabriela", "Zamora", "Hernandez", "0002", "A0002"))
+    lista_grupos.add(grupo1)
 
-    
-    print("Datos del Grupo 1:")
-    grupo1.listar()
+    grupo2 = Grupo("7mo", "B")
+    grupo2.add_alumno(Alumno("Sofia", "López", "Martínez", "0003", "A0003"))
+    lista_grupos.add(grupo2)
 
-    print("\nDatos del Grupo 2:")
-    grupo2.listar()
+    grupo3 = Grupo("7mo", "C")
+    grupo3.add_alumno(Alumno("Carlos", "Pérez", "Gómez", "0004", "A0004"))
+    lista_grupos.add(grupo3)
+
+    for grupo in lista_grupos.get_all():
+        print(grupo)
+        for alumno in grupo.get_alumnos():
+            print(f"  {alumno}")
