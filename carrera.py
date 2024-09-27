@@ -3,8 +3,7 @@ from grupo import Grupo
 from lista import Lista
 
 class Carrera(Lista):
-    def _init_(self, nombre=None, clave=None):
-        super()._init_()  # Inicializa la clase base
+    def __init__(self, nombre=None, clave=None):
         self.nombre = nombre
         self.clave = clave
 
@@ -17,27 +16,27 @@ class Carrera(Lista):
     def get_grupos(self):
         return self.get_all()
 
-    def _repr_(self):
+    def __repr__(self):
         return f'{self.nombre}, {self.clave}'
 
 if __name__ == "__main__":
     lista_carreras = Lista()
 
-    carrera1 = Carrera("Tics", "2212")
-    grupo1 = Grupo("7mo", "A")
-    grupo1.add_alumno(Alumno("Miguel", "Castro", "Mesta", "0001", "A0001"))
-    grupo1.add_alumno(Alumno("Gabriela", "Zamora", "Hernandez", "0002", "A0002"))
+    carrera1 = Carrera("Sistemas", "222")
+    grupo1 = Grupo("7/", "A")
+    grupo1.add_alumno(Alumno("Diego", "Mercado", "Franco", "01", "701"))
+    grupo1.add_alumno(Alumno("Diego", "Franco", "Mercado", "02", "702"))
     carrera1.add_grupo(grupo1)
 
-    grupo2 = Grupo("7mo", "B")
-    grupo2.add_alumno(Alumno("Sofia", "López", "Martínez", "0003", "A0003"))
+    grupo2 = Grupo("7/", "B")
+    grupo2.add_alumno(Alumno("Samuel", "López", "Rodriguez", "03", "703"))
     carrera1.add_grupo(grupo2)
 
     lista_carreras.add(carrera1)
 
-    carrera2 = Carrera("Matemáticas", "2213")
-    grupo3 = Grupo("7mo", "C")
-    grupo3.add_alumno(Alumno("Carlos", "Pérez", "Gómez", "0004", "A0004"))
+    carrera2 = Carrera("Electronica", "223")
+    grupo3 = Grupo("7/", "C")
+    grupo3.add_alumno(Alumno("Cristal", "Carrillo", "Guerrero", "04", "704"))
     carrera2.add_grupo(grupo3)
 
     lista_carreras.add(carrera2)

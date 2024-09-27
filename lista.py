@@ -1,5 +1,5 @@
 class Lista:
-    def _init_(self):
+    def __init__(self):
         self.elementos = []
 
     def add(self, elemento):
@@ -14,5 +14,5 @@ class Lista:
     def get_all(self):
         return self.elementos
 
-    def _repr_(self):
+    def __repr__(self):
         return str(self.elementos)
