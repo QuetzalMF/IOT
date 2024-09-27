@@ -1,6 +1,6 @@
 class Lista:
     def __init__(self):
-        self.elementos = []
+        self.elementos = [] 
 
     def add(self, elemento):
         self.elementos.append(elemento)
