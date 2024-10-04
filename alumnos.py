@@ -27,7 +27,9 @@ class Alumno(Lista):
         if not self.isLista:
             return {
                 "matricula": self.matricula,
-                "nombre": self.nombre
+                "nombre": self.nombre,
+                "p_materno": self.ap_materno,
+                "ap_paterno": self.ap_paterno
             }
         else:
             

@@ -1,10 +1,22 @@
 [
     {
         "grado": "Grupo",
-        "seccion": "A"
+        "seccion": "A",
+        "alumnos": [
+            {
+                "matricula": "701",
+                "nombre": "Diego"
+            }
+        ]
     },
     {
         "grado": "Grupo",
-        "seccion": "B"
+        "seccion": "B",
+        "alumnos": [
+            {
+                "matricula": "702",
+                "nombre": "Diego"
+            }
+        ]
     }
 ]
