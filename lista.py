@@ -1,18 +1,13 @@
 class Lista:
-    def __init__(self):
-        self.elementos = [] 
+    def _init_(self):
+        self.lista = []
+        self.isLista = True
 
-    def add(self, elemento):
-        self.elementos.append(elemento)
+    def add(self, objeto):
+        self.lista.append(objeto)
 
-    def edit(self, indice, elemento):
-        if 0 <= indice < len(self.elementos):
-            self.elementos[indice] = elemento
-        else:
-            raise IndexError("Índice fuera de rango")
+    def remove(self, index):
+        self.lista.remove(index)
 
-    def get_all(self):
-        return self.elementos
-
-    def __repr__(self):
-        return str(self.elementos)
+    def edit(self, index, objeto):
+        self.lista[index] = objeto

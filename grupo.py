@@ -1,38 +1,42 @@
-from alumno import Alumno
-from lista import Lista
+from alumnos import Alumno
+from lista import Lista  
 
 class Grupo(Lista):
-    def __init__(self, grado=None, seccion=None): 
-        self.grado = grado
-        self.seccion = seccion
+    def __init__(self, grado=None, seccion=None):
+        if (grado==None and seccion==None):
+            super().__init__()
+        else:
+            self.grado = grado
+            self.seccion = seccion
+            self.alumnos = Alumno()
+            self.isLista = False
+            
+    def addAlumno(self, alumno):
+        self.alumnos.add(alumno)
 
-    def add_alumno(self, alumno):
-        self.add(alumno) 
-
-    def get_alumnos(self):
-        return self.get_all() 
-
-    def __repr__(self):
-        return f"Grupo: {self.grado} {self.seccion}"
-
-if __name__ == "__main__":
-
-    lista_grupos = Lista()
-
-    grupo1 = Grupo("7/", "A")
-    grupo1.add_alumno(Alumno("Diego", "Mercado", "Franco", "01", "701"))
-    grupo1.add_alumno(Alumno("Diego", "Franco", "Mercado", "02", "702"))
-    grupo1.add_alumno(grupo1)
+    def __str__(self):
+        if self.isLista:
+            return f"Tienes (len({self.isLista})) Alumnos"
+        else:
+            return f"{self.grado} {self.seccion}"
     
-    grupo2 = Grupo("7/", "B")
-    grupo2.add_alumno(Alumno("Samuel", "López", "Rodriguez", "03", "703"))
+            
+if __name__ == "__main__":
+    alumno1 = Alumno("Diego", "Mercado", "Franco", "01", "701")
+    alumno2 = Alumno("Diego", "Franco", "Mercado", "02", "702")
+    grupo1 = Alumno("hola", "01")
+    grupo2 = Alumno("hola2", "02")
+    print(grupo1)
+    print(grupo2)
+
+    lista_grupos = Grupo()  
+    grupo1.add(alumno1)
+    grupo2.add(alumno2)
+    lista_grupos.add(grupo1)
     lista_grupos.add(grupo2)
-
-    grupo3 = Grupo("7/", "C")
-    grupo3.add_alumno(Alumno("Cristal", "Carrillo", "Guerrero", "04", "704"))
-    lista_grupos.add(grupo3)
-
-    for grupo in lista_grupos.get_all():
-        print(grupo)
-        for alumno in grupo.get_alumnos():
-            print(f"{alumno}")
+    
+    print(lista_grupos)
+    
+    # 1 paso: conventir toda la salida de informacion a Json
+    # Cuando regrese la cadena de datos que regrese como arreglo me lo convierta en Json o Diccionario
+    # Grupo

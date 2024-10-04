@@ -1,4 +1,4 @@
-from alumno import Alumno
+from alumnos import Alumno
 from grupo import Grupo
 from lista import Lista
 
