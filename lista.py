@@ -1,5 +1,5 @@
 class Lista:
-    def _init_(self):
+    def __init__(self):
         self.lista = []
         self.isLista = True
 

@@ -1,0 +1,34 @@
+[
+    {
+        "nombre": "Ingenieria Sistemas",
+        "clave": "TICS",
+        "grupos": [
+            {
+                "grado": "1",
+                "seccion": "A",
+                "alumnos": [
+                    {
+                        "matricula": "701",
+                        "nombre": "Diego"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "nombre": "Ingenieria Quimica",
+        "clave": "IG",
+        "grupos": [
+            {
+                "grado": "2",
+                "seccion": "B",
+                "alumnos": [
+                    {
+                        "matricula": "702",
+                        "nombre": "Diego"
+                    }
+                ]
+            }
+        ]
+    }
+]

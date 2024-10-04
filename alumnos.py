@@ -1,3 +1,4 @@
+import json
 from lista import Lista  
 
 class Alumno(Lista):
@@ -17,9 +18,9 @@ class Alumno(Lista):
     def __str__(self):
         if self.isLista:
             #return f"{self.nombre} {self.ap_materno} {self.ap_paterno} {self.matricula}"
-            return f"Tienes (len({self.lista})) Alumnos"
+            return f"Tienes {len(self.lista)} alumnos"
         else:
-            return f"{self.nombre}{self.matricula}"
+            return f"{self.nombre}{self.matricula}"   
         
      #metodo donde me lo regrese como diccionario si es una lista ...
     def getDic(self):
@@ -29,8 +30,11 @@ class Alumno(Lista):
                 "nombre": self.nombre
             }
         else:
-            # Return a list of dictionaries if it's a list of Alumno objects
+            
             return [a.getDic() for a in self.lista]
+    def save_to_json(self, filename):
+        with open(filename, 'w') as f:
+            json.dump(self.getDic(), f, indent=4)      
 
 
 if __name__ == "__main__":
@@ -40,9 +44,12 @@ if __name__ == "__main__":
     print(alumno2)
     
     lista_alumnos = Alumno()  
-    lista_alumnos.add(alumno1)
+    lista_alumnos.add(alumno1) #... error
     lista_alumnos.add(alumno2)
     print(lista_alumnos)
     
     
     #meter ident o identacion al diccionario
+    print(lista_alumnos.getDic())
+    lista_alumnos.save_to_json("lista_alumnos.json")
+    
