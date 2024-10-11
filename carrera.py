@@ -48,26 +48,17 @@ class Carrera(Lista):
     # Método para cargar los datos leídos y convertirlos en objetos Alumno
     def load_from_data(self, data):
         for carrera_data in data:
-                carrera = Carrera(
-                    carrera_data['nombre'],
-                    carrera_data['clave']
-                )
-        for grupo_data in carrera_data['grupos']:   
-                grupo = Grupo(
-                    grupo_data['grado'],
-                    grupo_data['seccion']
-                ) 
-                carrera.add_grupo(grupo)
-        for alumno_data in grupo_data['alumnos']:   
-                alumno = Alumno(
-                    alumno_data['matricula'],
-                    alumno_data['nombre'],
-                    alumno_data['ap_paterno'],
-                    alumno_data['ap_materno'],
-                    alumno_data['curp']
-                ) 
-                grupo.addAlumno(alumno)
-        self.add(grupo)   
+            carrera = Carrera(
+            carrera_data['nombre'],
+            carrera_data['clave']
+            )
+        # Crear los grupos dentro de la carrera
+        for grupo_data in carrera_data['grupos']:
+            grupo = Grupo()
+            grupo.alumnos=Alumno().load_from_data(grupo_data['alumnos'])
+            
+        self.add(carrera)  # Agregar la carrera a la lista de carreras
+  
     #.................................................. 
      
 if __name__ == "__main__":

@@ -54,15 +54,7 @@ class Grupo(Lista):
                     grupo_data['grado'],
                     grupo_data['seccion']
                 )
-        for alumno_data in grupo_data['alumnos']:   
-                alumno = Alumno(
-                    alumno_data['matricula'],
-                    alumno_data['nombre'],
-                    alumno_data['ap_paterno'],
-                    alumno_data['ap_materno'],
-                    alumno_data['curp']
-                ) 
-                grupo.addAlumno(alumno)
+                grupo.alumnos=Alumno().load_from_data(grupo_data['alumnos'])
         self.add(grupo)   
     #..................................................                     
     
