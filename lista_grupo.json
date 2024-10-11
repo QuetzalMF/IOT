@@ -5,7 +5,10 @@
         "alumnos": [
             {
                 "matricula": "701",
-                "nombre": "Diego"
+                "nombre": "Diego",
+                "ap_materno": "Mercado",
+                "ap_paterno": "Franco",
+                "curp": "01"
             }
         ]
     },
@@ -15,7 +18,10 @@
         "alumnos": [
             {
                 "matricula": "702",
-                "nombre": "Diego"
+                "nombre": "Diego",
+                "ap_materno": "Franco",
+                "ap_paterno": "Mercado",
+                "curp": "02"
             }
         ]
     }

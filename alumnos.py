@@ -28,8 +28,9 @@ class Alumno(Lista):
             return {
                 "matricula": self.matricula,
                 "nombre": self.nombre,
-                "p_materno": self.ap_materno,
-                "ap_paterno": self.ap_paterno
+                "ap_materno": self.ap_materno,
+                "ap_paterno": self.ap_paterno,
+                "curp": self.curp
             }
         else:    
             return [a.getDic() for a in self.lista]
@@ -38,27 +39,24 @@ class Alumno(Lista):
         with open(filename, 'w') as f:
             json.dump(self.getDic(), f, indent=4)  
             
-    #........................................................................
-    # Leer archivo JSON y convertirlo a objetos Alumno
-    def load_from_json(self, filename):
+    #..................................................                   
+    # Método para leer el archivo JSON y devolver la data
+    def read_json(self, filename):
         with open(filename, 'r') as f:
-            data = json.load(f)
-        
-        if isinstance(data, list):
-            for item in data:
-                alumno = self.dic_to_alumno(item)
-                self.add(alumno)
-    
-    # Método para convertir diccionario a objeto Alumno
-    def dic_to_alumno(self, dic):
-        return Alumno(
-            nombre=dic.get("nombre"),
-            ap_materno=dic.get("ap_materno"),
-            ap_paterno=dic.get("ap_paterno"),
-            curp=dic.get("curp"),
-            matricula=dic.get("matricula")
-        )
-    #.........................................................................
+            return json.load(f)
+    # Método para cargar los datos leídos y convertirlos en objetos Alumno
+    def load_from_data(self, data):
+        for alumno_data in data:
+            alumno = Alumno(
+                alumno_data['nombre'],
+                alumno_data['ap_materno'],
+                alumno_data['ap_paterno'],
+                alumno_data['curp'],
+                alumno_data['matricula']
+            )
+            self.add(alumno)  
+    #..................................................                         
+   
 
 
 if __name__ == "__main__":
@@ -77,17 +75,20 @@ if __name__ == "__main__":
     print(lista_alumnos.getDic())
     lista_alumnos.save_to_json("lista_alumnos.json")
     
-    #.......................................................
-    # Crear un nuevo objeto Alumno para cargar desde JSON
-    nueva_lista_alumnos = Alumno()
+    #..................................................            
+    #crear la instancia......
+    load_lista = Alumno()
+
+    # Leer los datos del archivo JSON
+    data = load_lista.read_json("lista_alumnos.json")
     
-    # Cargar los datos desde el archivo JSON y convertirlos a objetos Alumno
-    nueva_lista_alumnos.load_from_json("lista_alumnos.json")
+    # Cargar los datos leídos en la lista de objetos Alumno
+    load_lista.load_from_data(data)
     
-    # Imprimir la lista cargada
-    print(nueva_lista_alumnos)
-    print(nueva_lista_alumnos.getDic())
-    
+    for alumno in load_lista.lista:
+        print(alumno)
+    #..................................................                
+            
     # Leer Archivo 
     # Convertir el diccionario a una lista(Alumno) --- Guardar en el objeto de Alumno.lista
     # Crear objeto tipo alumno-lista // deberia estar guardando alumnos, arreglo de diccionarios

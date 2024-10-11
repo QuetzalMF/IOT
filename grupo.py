@@ -41,6 +41,31 @@ class Grupo(Lista):
         with open(filename, 'w') as f:
             json.dump(self.getDic(), f, indent=4)    
     
+     
+    #..................................................                   
+    # Método para leer el archivo JSON y devolver la data
+    def read_json(self, filename):
+        with open(filename, 'r') as f:
+            return json.load(f)
+    # Método para cargar los datos leídos y convertirlos en objetos Alumno
+    def load_from_data(self, data):
+        for grupo_data in data:
+                grupo = Grupo(
+                    grupo_data['grado'],
+                    grupo_data['seccion']
+                )
+        for alumno_data in grupo_data['alumnos']:   
+                alumno = Alumno(
+                    alumno_data['matricula'],
+                    alumno_data['nombre'],
+                    alumno_data['ap_paterno'],
+                    alumno_data['ap_materno'],
+                    alumno_data['curp']
+                ) 
+                grupo.addAlumno(alumno)
+        self.add(grupo)   
+    #..................................................                     
+    
             
 if __name__ == "__main__":
     alumno1 = Alumno("Diego", "Mercado", "Franco", "01", "701")
@@ -62,6 +87,18 @@ if __name__ == "__main__":
     # Convert the data to dictionary/JSON format
     print(lista_grupos.getDic())
     lista_grupos.save_to_json("lista_grupo.json")
+    
+    
+    #..................................................            
+    #crear la instancia......
+    load_lista = Grupo()
+    # Leer los datos del archivo JSON
+    data = load_lista.read_json("lista_grupo.json")
+    # Cargar los datos leídos en la lista de objetos Alumno
+    load_lista.load_from_data(data)
+    for grupo in load_lista.lista:
+        print(grupo)
+    #..................................................                
     
     # 1 paso: conventir toda la salida de informacion a Json
     # Cuando regrese la cadena de datos que regrese como arreglo me lo convierta en Json o Diccionario

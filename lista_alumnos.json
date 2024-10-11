@@ -2,13 +2,15 @@
     {
         "matricula": "701",
         "nombre": "Diego",
-        "p_materno": "Mercado",
-        "ap_paterno": "Franco"
+        "ap_materno": "Mercado",
+        "ap_paterno": "Franco",
+        "curp": "01"
     },
     {
         "matricula": "702",
         "nombre": "Diego",
-        "p_materno": "Franco",
-        "ap_paterno": "Mercado"
+        "ap_materno": "Franco",
+        "ap_paterno": "Mercado",
+        "curp": "02"
     }
 ]
