@@ -65,15 +65,4 @@ if __name__ == "__main__":
     print(lista_carreras)
     lista_carreras.save_to_json("lista_carreras.json")
     
-    # crear lista (Alumno)
-    # creo alumnos 
-    # Agrego alumno a lista
-    # convertir lista a diccionario
-    # Guardar Archivo
-    
-    # Leer Archivo 
-    # Convertir el diccionario a una lista(Alumno) --- Guardar en el objeto de Alumno.lista
-     # Crear objeto tipo alumno-lista // deberia estar guardando alumnos, arreglo de diccionarios
-     # Recorrer lista de diccionarios
-     # Convertir Diccionario en objeto alumno
-     # Agregar Alumno a Alumno.Lista
+   

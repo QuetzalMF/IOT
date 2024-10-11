@@ -1,10 +1,14 @@
 [
     {
         "matricula": "701",
-        "nombre": "Diego"
+        "nombre": "Diego",
+        "p_materno": "Mercado",
+        "ap_paterno": "Franco"
     },
     {
         "matricula": "702",
-        "nombre": "Diego"
+        "nombre": "Diego",
+        "p_materno": "Franco",
+        "ap_paterno": "Mercado"
     }
 ]
