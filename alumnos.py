@@ -1,5 +1,5 @@
 import json
-from lista import Lista  
+from lista import Lista
 
 class Alumno(Lista):
     def __init__(self, nombre=None, ap_materno=None, ap_paterno=None, curp=None, matricula=None):
@@ -18,12 +18,10 @@ class Alumno(Lista):
 
     def __str__(self):
         if self.isLista:
-            #return f"{self.nombre} {self.ap_materno} {self.ap_paterno} {self.matricula}"
             return f"Tienes {len(self.lista)} alumnos"
         else:
-            return f"{self.nombre}{self.ap_materno}{self.ap_paterno}{self.curp}{self.matricula}"   
-        
-     #metodo donde me lo regrese como diccionario si es una lista ...
+            return f"{self.nombre} {self.ap_materno} {self.ap_paterno} {self.curp} {self.matricula}"
+    
     def getDic(self):
         if not self.isLista:
             return {
@@ -38,14 +36,12 @@ class Alumno(Lista):
         
     def save_to_json(self, filename):
         with open(filename, 'w') as f:
-            json.dump(self.getDic(), f, indent=4)  
-            
-    #..................................................                   
-    # Método para leer el archivo JSON y devolver la data
+            json.dump(self.getDic(), f, indent=4)
+
     def read_json(self, filename):
         with open(filename, 'r') as f:
             return json.load(f)
-    # Método para cargar los datos leídos y convertirlos en objetos Alumno
+
     def load_from_data(self, data):
         for alumno_data in data:
             alumno = Alumno(
@@ -55,47 +51,5 @@ class Alumno(Lista):
                 alumno_data['curp'],
                 alumno_data['matricula']
             )
-            self.add(alumno)  
-    #..................................................                         
-
-#...........................................................................................................................................................           
-if __name__ == "__main__":
-    alumno1 = Alumno("Diego", "Mercado", "Franco", "01", "701")
-    alumno2 = Alumno("Diego", "Franco", "Mercado", "02", "702")
-    print(alumno1)
-    print(alumno2)
-    
-    lista_alumnos = Alumno()  
-    lista_alumnos.add(alumno1)
-    lista_alumnos.add(alumno2)
-    print(lista_alumnos)
-    
-    
-    #meter ident o identacion al diccionario
-    print(lista_alumnos.getDic())
-    lista_alumnos.save_to_json("lista_alumnos.json")
-    
-    #..................................................            
-    #crear la instancia......
-    load_lista = Alumno()
-
-    # Leer los datos del archivo JSON
-    data = load_lista.read_json("lista_alumnos.json")
-    
-    # Cargar los datos leídos en la lista de objetos Alumno
-    load_lista.load_from_data(data)
-    
-    for alumno in load_lista.lista:
-        print(alumno)
-
-#...........................................................................................................................................................           
+            self.add(alumno)
             
-    # crear una interfaz donde exista un menu
-    # se usaran metodos como -agregar alumnos, -elimnar, -editar, -ver lista
-    # en cada uno de los archivos disponibles
-    
-    # Menu
-    # - Ver lista alumnos
-    # - Agregar alumnos
-    # - Editar alumnos
-    # - Eliminar alumnos
