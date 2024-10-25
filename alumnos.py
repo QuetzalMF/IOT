@@ -15,12 +15,13 @@ class Alumno(Lista):
             self.matricula = matricula
             self.isLista = False
 
+
     def __str__(self):
         if self.isLista:
             #return f"{self.nombre} {self.ap_materno} {self.ap_paterno} {self.matricula}"
             return f"Tienes {len(self.lista)} alumnos"
         else:
-            return f"{self.nombre}{self.matricula}"   
+            return f"{self.nombre}{self.ap_materno}{self.ap_paterno}{self.curp}{self.matricula}"   
         
      #metodo donde me lo regrese como diccionario si es una lista ...
     def getDic(self):
@@ -56,9 +57,8 @@ class Alumno(Lista):
             )
             self.add(alumno)  
     #..................................................                         
-   
 
-
+#...........................................................................................................................................................           
 if __name__ == "__main__":
     alumno1 = Alumno("Diego", "Mercado", "Franco", "01", "701")
     alumno2 = Alumno("Diego", "Franco", "Mercado", "02", "702")
@@ -87,11 +87,15 @@ if __name__ == "__main__":
     
     for alumno in load_lista.lista:
         print(alumno)
-    #..................................................                
+
+#...........................................................................................................................................................           
             
-    # Leer Archivo 
-    # Convertir el diccionario a una lista(Alumno) --- Guardar en el objeto de Alumno.lista
-    # Crear objeto tipo alumno-lista // deberia estar guardando alumnos, arreglo de diccionarios
-    # Recorrer lista de diccionarios
-    # Convertir Diccionario en objeto alumno
-    # Agregar Alumno a Alumno.Lista
+    # crear una interfaz donde exista un menu
+    # se usaran metodos como -agregar alumnos, -elimnar, -editar, -ver lista
+    # en cada uno de los archivos disponibles
+    
+    # Menu
+    # - Ver lista alumnos
+    # - Agregar alumnos
+    # - Editar alumnos
+    # - Eliminar alumnos
